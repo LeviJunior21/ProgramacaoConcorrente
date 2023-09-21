@@ -2,6 +2,9 @@
 
 ## No diretório word_count:
 
+### Crie os diretórios e arquivos dataset:
+- ./make_dataset.sh
+
 ### Compare a execução uma thread com processos para Python.
 - time python3 ./python/word_count.py dataset
 - time ./run_python.sh dataset
