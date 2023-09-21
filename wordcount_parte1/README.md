@@ -1,4 +1,4 @@
-# Programacao Concorrente
+# Programação Concorrente
 
 ## No diretório word_count:
 
