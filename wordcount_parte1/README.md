@@ -28,6 +28,6 @@ A garantia que todas as palavras serão contadas é quando fazemos um wait para 
 - Observação: Cada computador poderá ter um tempo de execução diferente.
 
 Em sequência, onde Go e Java usam códigos similares aos do Python mas com algumas modificações no arquivo.
-1 - Python: https://asciinema.org/a/kh6eKo7fZ4BCNRplc1AHQ7hdh
-2 - Go: https://asciinema.org/a/dXCLnx5sFu5iA6j5S5P29Q8NP
-3 - Java: https://asciinema.org/a/lY85JZ288T6TnrDU3nzvJezYl
+- 1 - Python: https://asciinema.org/a/kh6eKo7fZ4BCNRplc1AHQ7hdh
+- 2 - Go: https://asciinema.org/a/dXCLnx5sFu5iA6j5S5P29Q8NP
+- 3 - Java: https://asciinema.org/a/lY85JZ288T6TnrDU3nzvJezYl
