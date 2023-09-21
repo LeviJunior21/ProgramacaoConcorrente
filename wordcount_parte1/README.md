@@ -1,6 +1,6 @@
 # Programação Concorrente
 
-## No diretório word_count:
+## No diretório wordcount_parte1:
 
 ### Crie os sub-diretórios e arquivos para o diretorio dataset:
 - ./make_dataset.sh
