@@ -15,5 +15,5 @@
 - time ./run_java.sh dataset
 
 ### Links e avisos
-- Execução: [vídeos Asciinema (Drive)](https://drive.google.com/file/d/1KK8SbFm6-tZSRdY-9Js-OQdFni-ofTCZ/view?usp=sharing)
+- Escrita e execução do Programa: [vídeos Asciinema (Drive)](https://drive.google.com/file/d/1KK8SbFm6-tZSRdY-9Js-OQdFni-ofTCZ/view?usp=sharing)
 - Observação: Cada computador poderá ter um tempo de execução diferente.
