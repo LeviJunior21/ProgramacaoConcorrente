@@ -2,7 +2,7 @@
 
 ## No diretório word_count:
 
-### Crie os diretórios e arquivos dataset:
+### Crie os sub-diretórios e arquivos para o diretorio dataset:
 - ./make_dataset.sh
 
 ### Compare a execução uma thread com processos para Python.
