@@ -21,4 +21,4 @@ Após cada Thread contar as palavras do seu diretório, elas incrementam numa va
 - time ./run_java.sh dataset
 
 ### Links
-- Escrita e execução do Programa em Asciinema: [Vídeos Asciinema (Drive)](https://drive.google.com/drive/folders/1tq0v_ZYFCRJ50Z_ln7CiDel4hzc9vXA1?usp=sharing)
+- Escrita e execução do Programa em Asciinema: [Vídeos Asciinema](https://drive.google.com/drive/folders/1tq0v_ZYFCRJ50Z_ln7CiDel4hzc9vXA1?usp=sharing)
