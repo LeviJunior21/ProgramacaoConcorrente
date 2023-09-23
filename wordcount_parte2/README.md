@@ -1,22 +1,23 @@
 # Programação Concorrente - Threads
 
-A estratégia é criar Threads iguais a quantidade de diretórios. Cada Thread ganha um sub-diretório para contar as palavras de todos os arquivos dentro do sub-diretório. O número de Threads criadas é igual ao número de sub-diretórios.
+A estratégia é criar Threads iguais a quantidade de diretórios. Cada Thread ganha um sub-diretório para contar as palavras de todos os arquivos dentro do sub-diretório.
 
-Após cada Thread contar as palavras do seu diretório, elas incrementam numa variável que é compartilhada globalmente.
+Após cada Thread contar as palavras do seu diretório, elas incrementam numa variável que é compartilhada globalmente, que por sua vez é uma região crítica e precisamos garantir exclusão mútua.
 
-A garantia que todas as palavras serão contadas e mostradas ao fim do programa é quando fazemos um acquir para esperar todos as threads terminarem e em seguida mostramos o resultado da contagem das palavras feita por todas as Threads.
+## No diretório wordcount_parte2:
 
-## No diretório wordcount_parte1:
-
-### Crie os sub-diretórios e arquivos para o diretorio dataset:
+### Dê permissão para os arquivos shell, crie os sub-diretórios e arquivos para o diretorio dataset:
+- chmod +x ./make_dataset.sh
+- chmod +x ./run_python.sh
+- chmod +x ./run_java.sh
 - ./make_dataset.sh
 
 ### Compare a execução uma thread com processos para Python.
-- time python3 word_coun.py dataset
+- time python3 ./python/word_count.py dataset
 - time ./run_python.sh dataset
 
 ### Compare a execução uma thread com processos para Java.
-- time java ./java/src/main/java/WordCount.java dataset
+- time java ./java/WordCount.java dataset
 - time ./run_java.sh dataset
 
 ### Links e avisos
