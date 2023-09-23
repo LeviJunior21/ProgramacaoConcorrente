@@ -1,4 +1,4 @@
 #!/bin/bash
 
-javac WordCountConc.java
-java WordCountConc.java $1
+javac ./java/WordCountConc.java
+java ./java/WordCountConc.java $1
