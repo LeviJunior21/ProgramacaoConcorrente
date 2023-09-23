@@ -6,7 +6,7 @@ Após cada Thread contar as palavras do seu diretório, elas incrementam numa va
 
 ## No diretório wordcount_parte2:
 
-### Dê permissão para os arquivos shell, crie os sub-diretórios e arquivos para o diretorio dataset:
+### Dê permissão para os arquivos shell e crie os sub-diretórios e arquivos para o diretorio dataset:
 - chmod +x ./make_dataset.sh
 - chmod +x ./run_python.sh
 - chmod +x ./run_java.sh
