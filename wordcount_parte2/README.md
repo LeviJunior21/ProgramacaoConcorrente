@@ -1,10 +1,10 @@
-# Programação Concorrente - Processos
+# Programação Concorrente - Threads
 
-A estratégia é criar processos igual a quantidade de diretórios, os processos criam arquivos que escrevem a quantidade de palavras encontradas num diretório.
-Apesar de serem concorrentes, como cada um escreve um arquivo diferente, não há problemas de perda dos dados em região crítica.
+A estratégia é criar Threads iguais a quantidade de diretórios. Cada Thread ganha um sub-diretório para contar as palavras de todos os arquivos dentro do sub-diretório. O número de Threads criadas é igual ao número de sub-diretórios.
 
-A garantia que todas as palavras serão contadas é quando fazemos um wait para esperar todos os processos terminarem e em seguida contamos as palavras para cada arquivo criado pelos processos.
+Após cada Thread contar as palavras do seu diretório, elas incrementam numa variável que é compartilhada globalmente.
 
+A garantia que todas as palavras serão contadas e mostradas ao fim do programa é quando fazemos um acquir para esperar todos as threads terminarem e em seguida mostramos o resultado da contagem das palavras feita por todas as Threads.
 
 ## No diretório wordcount_parte1:
 
