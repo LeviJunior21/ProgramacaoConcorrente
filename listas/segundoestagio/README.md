@@ -8,12 +8,12 @@
     2    private Boolean[] flags;
     3
     4	    public LockOne() {
-    5		      this.flags = {False, False}
+    5		    this.flags = {false, false}
     6	    }
     7
     8	    public void lock() {
-    9		      int myID = Thread.getID();
-    10		    this.flags[myID] = True;
+    9		    int myID = Thread.getID();
+    10		    this.flags[myID] = true;
     11	      while (this.flags[1 - myID]);
     12    }
     13}
@@ -39,23 +39,23 @@ Não tem progresso enquanto não tiver outra Thread que libere.
 ### 2 - Explique como o algoritmo de Peterson garante que os problemas apresentados nos algoritmos LockOne e LockTwo são resolvidos.
     
     1public class Peterson {
-    2    private Boolean[] flags;
-    3	   private int victim;
+    2    private boolean[] flags;
+    3	 private int victim;
     4
-    5	   public Peterson() {
-    6		     this.flags = {False, False};
-    7	   }
+    5	 public Peterson() {
+    6        this.flags = {false, false};
+    7	 }
     8
-    9	   public void lock() {
+    9	 public void lock() {
     10	     int myID = Tread.gerID();
-    11		   this.flags[myID] = True;
-    12		   this.victim = myID;
-    13		   while (this.flags[1 - myID] && this.victim == myID);
+    11		 this.flags[myID] = true;
+    12	     this.victim = myID;
+    13	     while (this.flags[1 - myID] && this.victim == myID);
     14   }
     15	
     16	 public void unlock() {
     17	     int myID = Thread.getID();
-    18	     this.flags[myID] = False;
+    18	     this.flags[myID] = false;
     19	 }
     20}
 
@@ -70,29 +70,26 @@ Se a Thread B não está entrando e saindo repetidamente na região crítica é 
 
 Essa contradição final prova que Peterson não tem Starvation. Logo, não tem Deadlock.
 
-
-
-
 ### 3 - Explique como travas TTAS podem ter desempenho melhor que travas TAS. Sua explicação deve considerar aspectos de arquitetura de computadores.
     
     public class TTAS {
         private AtomicBoolean b;
     
         public TTAS() {
-    		    this.b = new AtomicBoolean(False);
+    		    this.b = new AtomicBoolean(false);
         }
     
     	  public void lock() {
-    		    while (True) {
+    		    while (true) {
     			      while(b.get());
-    			      if (!b.getAndSet(True)) {
+    			      if (!b.getAndSet(true)) {
     				        break;
                 }
             }
         }
     
         public void unlock() {
-    	      b.set(False);
+    	      b.set(false);
         }
     }
 >
@@ -102,15 +99,15 @@ Essa contradição final prova que Peterson não tem Starvation. Logo, não tem 
         private AtomicBoolean b;
     
     	  public TAS() {
-    		    this.b = new AtomicBoolean(False);
+    		    this.b = new AtomicBoolean(false);
         }
     
     	  public void lock() {
-    		    while(b.getAndSet(True));
+    		    while(b.getAndSet(true));
         }
     
         public void unlock() {
-    	      b.set(False);
+    	      b.set(false);
         }
     }
 
@@ -120,8 +117,6 @@ No TAS, cada chamada ao getAndSet() é anunciado no barramento, como todas as Th
 Essa chamada forçam outros processadores a descartar suas cópias de cache e todas as Threads que estão rodando ao fazer getAndSet() vai dar “cache miss” quase toda vez e, portanto, devem usar o barramento para pegar o novo valor.
 
 Com TTAS, enquanto o Lock é tido pela Thread A, a Thread B vai dá cache miss na primeira vez que tentar ler o Lock, forçando B a bloquear enquanto o outro valor é carregado na cache de B. Desde que A continue tendo Lock, então B só vai ler o valor, mas vai dar cache hit toda vez e portanto não vai produzir tráfego no barramento.
-
-
 
 ### 4 - Considere a implementação BrokenBakery. Que problemas, de progresso e segurança, essa implementação incorreta do algoritmo apresenta.
   
@@ -208,21 +203,21 @@ Ela vê que outra Thread tem maior prioridade e por desempate vai ver que não e
 
     public class Bakery {
         private AtomicInteger ticketCounter;
-    	  private int[] tickets;
+    	private int[] tickets;
         private int n;
     
-    	  public Bakery(int n) {
+    	public Bakery(int n) {
             this.ticketCounter = new AtomicInteger(0);
-    		    this.tickets = new int[n];
-    		    this.n = n;
+    	    this.tickets = new int[n];
+    	    this.n = n;
         }
     
         public void lock() {
-    	      int myID = Thread.getID();
-    	      this.tickets[myID] = this.ticketCounter.incrementAndGet();
+            int myID = Thread.getID();
+    	    this.tickets[myID] = this.ticketCounter.incrementAndGet();
     
-    	      for (int i = 0; i < this.n; i++) {
-    		        while (this.tickets[i] != 0 &&this.tickets[i] < this.tickets[myID]);
+    	    for (int i = 0; i < this.n; i++) {
+    	        while (this.tickets[i] != 0 &&this.tickets[i] < this.tickets[myID]);
             }
         }
     
