@@ -14,8 +14,8 @@
     8	    public void lock() {
     9		    int myID = Thread.getID();
     10		    this.flags[myID] = true;
-    11	      while (this.flags[1 - myID]);
-    12    }
+    11	        while (this.flags[1 - myID]);
+    12      }
     13}
 
 T0_10 -> T1_10 -> T0_11
@@ -25,9 +25,9 @@ Depois disso, as threads entram em Deadlock pois ambas estão querendo entrar na
     2    private int victim;
     3
     4    public void lock() {
-    5		     int myID = Thread.getID();
-    6		     this.victim = myID;
-    7		     while (this.victim == myID);
+    5        int myID = Thread.getID();
+    6        this.victim = myID;
+    7        while (this.victim == myID);
     8    }
     9}
 
@@ -40,23 +40,23 @@ Não tem progresso enquanto não tiver outra Thread que libere.
     
     1public class Peterson {
     2    private boolean[] flags;
-    3	 private int victim;
+    3    private int victim;
     4
-    5	 public Peterson() {
+    5    public Peterson() {
     6        this.flags = {false, false};
-    7	 }
+    7    }
     8
-    9	 public void lock() {
-    10	     int myID = Tread.gerID();
-    11		 this.flags[myID] = true;
-    12	     this.victim = myID;
-    13	     while (this.flags[1 - myID] && this.victim == myID);
-    14   }
+    9    public void lock() {
+    10        int myID = Tread.gerID();
+    11        this.flags[myID] = true;
+    12        this.victim = myID;
+    13        while (this.flags[1 - myID] && this.victim == myID);
+    14    }
     15	
-    16	 public void unlock() {
-    17	     int myID = Thread.getID();
-    18	     this.flags[myID] = false;
-    19	 }
+    16    public void unlock() {
+    17        int myID = Thread.getID();
+    18        this.flags[myID] = false;
+    19    }
     20}
 
 Começamos provando que não tem starvation.
@@ -76,20 +76,20 @@ Essa contradição final prova que Peterson não tem Starvation. Logo, não tem 
         private AtomicBoolean b;
     
         public TTAS() {
-    		    this.b = new AtomicBoolean(false);
+            this.b = new AtomicBoolean(false);
         }
     
-    	  public void lock() {
-    		    while (true) {
-    			      while(b.get());
-    			      if (!b.getAndSet(true)) {
-    				        break;
+        public void lock() {
+            while (true) {
+                while(b.get());
+                if (!b.getAndSet(true)) {
+                    break;
                 }
             }
         }
     
         public void unlock() {
-    	      b.set(false);
+            b.set(false);
         }
     }
 >
@@ -98,16 +98,16 @@ Essa contradição final prova que Peterson não tem Starvation. Logo, não tem 
     public class TAS {
         private AtomicBoolean b;
     
-    	  public TAS() {
-    		    this.b = new AtomicBoolean(false);
+        public TAS() {
+            this.b = new AtomicBoolean(false);
         }
     
-    	  public void lock() {
-    		    while(b.getAndSet(true));
+        public void lock() {
+            while(b.getAndSet(true));
         }
     
         public void unlock() {
-    	      b.set(false);
+            b.set(false);
         }
     }
 
@@ -136,7 +136,7 @@ Com TTAS, enquanto o Lock é tido pela Thread A, a Thread B vai dá cache miss n
                 if (ticket[j] > ticket[id]) {
                     ticket[id] = ticket[j];
                 }
-    		    }
+            }
             
             ticket[id]++;
     
@@ -174,13 +174,13 @@ Com TTAS, enquanto o Lock é tido pela Thread A, a Thread B vai dá cache miss n
                 if (ticket[j] > ticket[id]) {
                     ticket[id] = ticket[j];
                 }
-    		    }
+            }
       
             ticket[id]++;
             this.choosing[id] = False;
     
             for (int j = 0; j < n; j++) {
-    	          while(this.choosing[j]);
+                while(this.choosing[j]);
                 while (((ticket[j] != 0) && (ticket[j] < ticket[id])) || ((this.tickets[j] == this.tickets[id]) && j < id));
             }
         }
@@ -203,10 +203,10 @@ Ela vê que outra Thread tem maior prioridade e por desempate vai ver que não e
 
     public class Bakery {
         private AtomicInteger ticketCounter;
-    	private int[] tickets;
+        private int[] tickets;
         private int n;
     
-    	public Bakery(int n) {
+        public Bakery(int n) {
             this.ticketCounter = new AtomicInteger(0);
     	    this.tickets = new int[n];
     	    this.n = n;
@@ -214,10 +214,10 @@ Ela vê que outra Thread tem maior prioridade e por desempate vai ver que não e
     
         public void lock() {
             int myID = Thread.getID();
-    	    this.tickets[myID] = this.ticketCounter.incrementAndGet();
+            this.tickets[myID] = this.ticketCounter.incrementAndGet();
     
-    	    for (int i = 0; i < this.n; i++) {
-    	        while (this.tickets[i] != 0 &&this.tickets[i] < this.tickets[myID]);
+            for (int i = 0; i < this.n; i++) {
+                while (this.tickets[i] != 0 &&this.tickets[i] < this.tickets[myID]);
             }
         }
     
