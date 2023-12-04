@@ -156,8 +156,8 @@ Com TTAS, enquanto o Lock é tido pela Thread A, a Thread B vai dá cache miss n
 >
  
     class BrokenBakery implements Lock {
-        private volatile int[] ticket;
-        private volatile boolean[] choosing;
+        private int[] volatile ticket;
+        private boolean[] volatile choosing;
     
         public Bakery (int n) {
             ticket = new int[n];
@@ -208,8 +208,8 @@ Ela vê que outra Thread tem maior prioridade e por desempate vai ver que não e
     
         public Bakery(int n) {
             this.ticketCounter = new AtomicInteger(0);
-    	    this.tickets = new int[n];
-    	    this.n = n;
+            this.tickets = new int[n];
+            this.n = n;
         }
     
         public void lock() {
