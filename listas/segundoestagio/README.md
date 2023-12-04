@@ -1,6 +1,6 @@
-Levi de Lima Pereira Júnior
+#Levi de Lima Pereira Júnior
 
-# Programação Concorrente - UFCG
+## Programação Concorrente - UFCG
 
 ### 1 - Considere os algoritmos LockOne e LockTwo. Indique exemplos de execução, para cada um dos algoritmos, em que são quebrados requisitos de segurança e/ou progresso. Explique quais os problemas que acontecem em cada caso. Use a seguinte notação para indicar os exemplos de execução (T0_5 -> T0_6 -> T1_5). Essa notação indica que a thread T0 executou as linhas 5 e 6 e depois a thread T1 executou a linha 5.
 
