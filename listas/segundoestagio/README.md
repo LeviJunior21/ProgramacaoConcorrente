@@ -250,4 +250,3 @@ Deve-se usar quando a concorrência é alta para um número alto de Threads. Poi
 Petterson é usado para apenas 2 Threads. Ela garante que haja um controle alternado entre duas Threads que queiram usar a região crítica. 
 
 Bakery é usado quando temos um número grande de Threads querendo entrar na região crítica que usam um tempo curto e quando necessariamente queremos implementar uma execução justa das Thread em forma de fila por ordem de chegada. Assim, uma Thread que executa uma região crítica não pode furar a fila das Threads que tem bilhetes menores que ele. 
-
